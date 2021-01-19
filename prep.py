@@ -13,6 +13,7 @@ def callSystem(time, index):
     command = 'echo "python3 ' + str(filepath) + '/post.py ' + str(index) + '"'
     at = ' | at -M ' + str(time.strftime('%H:%M %Y-%m-%d') )
     print(command + at)
+    #os.system(command + at)
 
 config = configparser.ConfigParser()
 config.read(str(filepath) + '/config.ini')
