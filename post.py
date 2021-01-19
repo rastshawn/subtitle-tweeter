@@ -5,15 +5,18 @@ import configparser
 #from os import path
 import sys
 from pysubparser import parser
+import pathlib
+import os
+filepath = pathlib.Path(__file__).parent.absolute()
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read(str(filepath) + '/config.ini')
 filename = config['DEFAULT']['filename']
 
 if len(sys.argv) < 2:
     quit()
 indexToSend = int(sys.argv[1])
-subtitles = parser.parse('./' + filename)
+subtitles = parser.parse(str(filepath) + '/' + filename, 'srt')
 
 
 api = twitter.Api(consumer_key=config['DEFAULT']['consumer_key'],
